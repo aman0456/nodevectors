@@ -24,7 +24,7 @@ class Node2Vec(BaseNodeEmbedder):
         threads=0, 
         keep_walks=False,
         verbose=True,
-        w2vparams={"window":10, "negative":5, "epochs":10,
+        w2vparams={"window":10, "negative":5,
                    "batch_words":128}):
         """
         Parameters
@@ -127,6 +127,7 @@ class Node2Vec(BaseNodeEmbedder):
                     "and 3.8 have had issues")
         w2v_t = time.time()
         # Train gensim word2vec model on random walks
+        del self.w2vparams["iter"]
         self.model = gensim.models.Word2Vec(
             sentences=self.walks,
             vector_size=self.n_components,
