@@ -131,6 +131,7 @@ class Node2Vec(BaseNodeEmbedder):
         self.model = gensim.models.Word2Vec(
             sentences=self.walks,
             vector_size=self.n_components,
+            epochs=10,
             **self.w2vparams)
         if not self.keep_walks:
             del self.walks
