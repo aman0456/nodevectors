@@ -127,7 +127,6 @@ class Node2Vec(BaseNodeEmbedder):
                     "and 3.8 have had issues")
         w2v_t = time.time()
         # Train gensim word2vec model on random walks
-        del self.w2vparams["iter"]
         self.model = gensim.models.Word2Vec(
             sentences=self.walks,
             vector_size=self.n_components,
